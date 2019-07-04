@@ -11,7 +11,7 @@ class Single{
     private  static /*final*/ Single s = new Single(); // 成员变量
     private Single(){
     }
-    public static Single getInstance(int x){ // 成员变量  属性私有化,对外提供方法;
+    public static Single getInstance(int x){ // 成员变量  属性私有化,对外提供方法; // 这里single 已经创建了对象;
 //        if(x<0)
 ////            return null;  // 方法可控;
         return s;
