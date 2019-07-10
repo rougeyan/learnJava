@@ -14,8 +14,9 @@ package jicheng;
 // 单继承: 一个子类只能有一个父类
 // 多继承: 一个子类只能可以有多个父类
 // 多继承(注意:): 父类若有相同方法 / 属性 会产生调用的不确定性,
+// 多重继承 class Zi extends Fu1,Fu2
 
-// 多重继承 a=>b =>c;
+// 多重继承 a=>b =>c;(层级关系)
 class Person {
     String name;
     int age;
