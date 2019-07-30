@@ -45,66 +45,70 @@ abstract
  * 需求: 公司程序员有姓名,工号,薪水,工作内容
  * 项目经理拥有姓名,工号,薪水,工作内容 还有奖金,工作内容
  * 对给出需求进行数据建模
- *
+ * <p>
  * 程序员:
- *      属性:姓名,工号,薪水
- *      行为:工作
+ * 属性:姓名,工号,薪水
+ * 行为:工作
  * 项目经理:
- *      属性:姓名,工号,薪水,奖金
- *      行为:工作
- *
+ * 属性:姓名,工号,薪水,奖金
+ * 行为:工作
+ * <p>
  * 这些对象是否有关系呢?  他们之间的共性, 存在关系
- *  共同抽取 员工
- *
- *  员工:
- *      属性:姓名,工号,薪水
- *      行为:工作
- *
- *  员工的工作内容是不具体的, 应该是抽象的, 由具体的子类体现.
- *  work 不应该西方到实例对象;
+ * 共同抽取 员工
+ * <p>
+ * 员工:
+ * 属性:姓名,工号,薪水
+ * 行为:工作
+ * <p>
+ * 员工的工作内容是不具体的, 应该是抽象的, 由具体的子类体现.
+ * work 不应该西方到实例对象;
  */
 
-abstract class Employee{
+abstract class Employee {
     private String name;
     private String id;
     private double pay;
+
     /*
-    *  构造一个员工对象,一开始具备这三个属性
-    * */
-    public Employee(String name, String id, double pay){
+     *  构造一个员工对象,一开始具备这三个属性
+     * */
+    public Employee(String name, String id, double pay) {
         this.name = name;
         this.id = id;
         this.pay = pay;
     }
+
     /* 工作行为 */
     // 对于各类型自员工的工作内容是不具体的
     public abstract void work();
 
 }
 
-class Programmer extends  Employee{
-    Programmer(String name, String id, double pay){
-        super(name,id,pay);
+class Programmer extends Employee {
+    Programmer(String name, String id, double pay) {
+        super(name, id, pay);
     }
-    public void work(){
+
+    public void work() {
         System.out.println("coding...");
     }
 }
 
-class Manager extends  Employee{
+class Manager extends Employee {
     private double bonus;
-    Manager(String name, String id, double pay, double bonus){
-        super(name,id,pay);
+
+    Manager(String name, String id, double pay, double bonus) {
+        super(name, id, pay);
         this.bonus = bonus;
     }
-    public void work(){
+
+    public void work() {
         System.out.println("manage...");
     }
 }
 
-class abstractTest{
-    public static void main(String[] args)
-    {
+class abstractTest {
+    public static void main(String[] args) {
         System.out.println("hellow wordl!");
     }
 }

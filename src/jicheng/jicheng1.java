@@ -12,10 +12,11 @@ package jicheng;
 // java 中继承的体现
 // java 允许单继承, 不直接多继承, 多继承以其他方式体现
 // 单继承: 一个子类只能有一个父类
-// 多继承: 一个子类只能可以有多个父类
-// 多继承(注意:): 父类若有相同方法 / 属性 会产生调用的不确定性,
-// 多重继承 class Zi extends Fu1,Fu2
 
+// 多继承: 一个子类只能可以有多个父类
+// 多继承(注意:): 父类若有相同名的方法 / 属性 会产生调用的不确定性,(多继承通过 实现impl来实现;
+
+// 多重继承 class Zi extends Fu1,Fu2
 // 多重继承 a=>b =>c;(层级关系)
 class Person {
     String name;
@@ -37,7 +38,7 @@ class ExtendsDemo{
     public static  void  main(String[] args){
         Student stu = new Student();
         stu.name = "xiaoming";
-        stu.age =12;
+        stu.age = 12;
         stu.study();
     }
 }

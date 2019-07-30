@@ -53,12 +53,12 @@ class Superman{
         return this.name;
     }
     public void fly(){
-        System.out.println(this.name+"..fly");
+        System.out.println(this.name+"..flaaay");
     }
 }
 
 class SupermanTest{
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //        Superman man = new Superman("克拉克");
 //        Superman man = new Superman("克拉克"); 这样会撞车;
 //        man.fly();
