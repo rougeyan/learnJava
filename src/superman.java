@@ -1,4 +1,8 @@
 //饿汉式 一上来就占用了内存(开发使用最多)
+
+
+
+//
 class SingleDemoo{
     public static void main(String[] args){
         // Single ss = Single.s // 可以实现,但是不提倡, 一般都是加入方法来获取为了对象可控;
@@ -68,3 +72,25 @@ class SupermanTest{
         man2.fly();
     }
 }
+
+
+// 饿汉式 多线程没有问题
+
+
+// 懒汉式 多线程 因为是动态创建对象 因为可能存在问题;
+
+// 并发出现问题 加入synchronized,
+// 双重判定,解决效率问题,减少判定锁的次数;
+// 减少检测同步锁
+/*
+* public synchronized Single getInstance(){
+*  if(s==null){
+*       synchronized( single.class){
+*          if(s==null){
+*           return s
+*       }
+*    }
+* }
+*
+*
+* */
