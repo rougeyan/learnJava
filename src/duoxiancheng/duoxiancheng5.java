@@ -72,6 +72,51 @@ import java.util.concurrent.locks.*;
  *  效率较低;
  *
  */
+
+
+/**
+ * 解决多生产多消费的效率问题;
+ * jdk1.5;之后的解决方法;
+ * java.util.concurrent.locks;
+ *
+ * lock接口:
+ * 比同步更厉害,有更多操作;
+ * lock() 获取锁;
+ * unlock() 释放锁;
+ * 提供更加面向对象的锁,在该锁中提供更多显式的锁操作
+ * 在1.5之后 可以减少synchronized的锁操作
+ *
+ * 异常, 不一定要处理;
+ * 因此加入try catch 否则阻塞;
+ * try{
+ *
+ * }finallu{
+ *     l.unlock()
+ * }
+ *
+ * 锁跟 lock发生了变化了
+ * lock 跟 this 不是同个锁;
+ *
+ * 已经讲this锁替换成新锁lock;那么监视器(锁上的wait,notify,notifyAll也因该替换成新锁的监视器方法)
+ * 原来的监视器方法 在jdk1.5中被封装到一个condition对象中;
+ *
+ * Condition对象的出现其实是替代object的中监视器的方法;
+ * 把所有的监视器改成condition对象;
+ *
+ * 与同步一样 synchronized写法一样  使用this.wait() notify notifyAll 之类 仅仅是改了写法
+ *
+ *
+ */
+
+/**
+ * 解决效率问题;
+ * 唤醒所有减低效率;
+ *
+ * 就的使用一个锁
+ * 这样 消费方 生产方 拥有各自的的condition
+ * 一个锁多个监视器;
+ *
+ */
 public class duoxiancheng5 {
     public static void main(String[] args) {
         // 1. 创建资源对象
@@ -96,6 +141,9 @@ class resource {
 
     // 定义锁对象;
     private java.util.concurrent.locks.Lock lock = new java.util.concurrent.locks.ReentrantLock();
+    // 获取锁的condition 对象
+    private Condition produce = lock.newCondition(); // 生产锁condition;
+    private Condition consume = lock.newCondition(); // 消费condition
 
     // 提示设置方法
     public void set(String name){ // 加入同步
@@ -105,7 +153,7 @@ class resource {
         try{
             if(flag){
                 try {
-                    this.wait();
+                    produce.await();
                 }catch (InterruptedException e){
                 }
             }
@@ -118,7 +166,8 @@ class resource {
 
             // 理想状态下没输出 生产者前 不能被消费者使用
             flag = true;
-            this.notify();
+            // cond.signalAll();
+            consume.signal(); // 唤醒一个消费时
         }finally {
             lock.unlock();
         }
@@ -129,13 +178,13 @@ class resource {
         try {
             if (!flag) {
                 try {
-                    this.wait();
+                    consume.await();
                 } catch (InterruptedException e) {
                 }
             }
             System.out.println(Thread.currentThread().getName() + "消费者" + this.name);
             flag = false;
-            this.notify();
+            produce.signal();
         }finally {
             lock.unlock();
         }

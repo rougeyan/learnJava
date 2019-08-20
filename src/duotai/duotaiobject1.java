@@ -38,7 +38,7 @@ class Peson extends Object{
 
     // 以后判断对象是否相同 就要覆盖equals 方法;
 
-    public boolean equals(Object p){
+    public boolean equals(Object p){ // 其实传进来之前已经向上转型成object了;
         if(this == p)
             return true;
 
