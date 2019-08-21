@@ -1,3 +1,5 @@
+package src.lei;
+
 class persom {
     private String name;
     private int age;

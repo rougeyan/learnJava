@@ -1,3 +1,5 @@
+package src.lei;
+
 class constor {
 // 1.加载demo.class文件进入方法区, 进行空间分配
 // 2. 如果有静态变量, 先默认初始化, 显示初始化,

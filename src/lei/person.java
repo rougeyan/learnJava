@@ -1,3 +1,5 @@
+package src.lei;
+
 class Person{
     private String name;
     private int age; // 因为设置了private 不能再person类以外的程序直接访问;

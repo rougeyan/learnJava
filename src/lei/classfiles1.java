@@ -1,3 +1,5 @@
+package src.lei;
+
 class Car{
     String color;
     int number;
