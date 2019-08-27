@@ -43,5 +43,12 @@ public class collection {
         // c.clear();
 
         // 带All的方法:
+        // 具体查api
+
+        // c.addAll(c2)
+        // 删除不同的c1 和查相同的元素
+        // c.removeAll(c2)
+        // 保留相同
+        // c.retainAll()
     }
 }
