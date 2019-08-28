@@ -5,7 +5,7 @@ package src.fanxing;
  * list,Collection集合,都是接口,
  * 都带泛型
  */
-public class fanxingJiekou {
+public class fanxing5jiekou {
     public static void main(String[] args) {
 //        interimpl<String> inter= new interimpl<String>();
                 new interimpl<String>().show("hehe");

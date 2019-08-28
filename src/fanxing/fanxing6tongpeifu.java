@@ -106,6 +106,22 @@ public class fanxing6tongpeifu {
      *  使用通配符
      *
      *  当使用泛型类或者接口时, 传递的的类型不确定 可以使用通配符(?)表示;
+     *
+     *  Collection<?> 可以穿任意类型
+     *
+     *  但是需求只允许部分类型
+     *
+     *  对集合元素传入的类型进行限定,
+     *  使用泛型的限定,
+     *  <? extends person> 接受person类 / person的子类; 上限
+     *  总结
+     *
+     *  <? super E> 接受E类型或者E的父类型 下限
+     *  E是固定的 上面的爹是可以换的;
+     *
+     *  <? extends E> 接受E类型 或者E的子类型; 上限
+     *  E是固定的 下面的子类是可以换的;
+     *
      */
     private static void printlist(Collection<?> e) {
         for (Iterator<?> iterator = e.iterator(); iterator.hasNext(); ) {
@@ -113,3 +129,7 @@ public class fanxing6tongpeifu {
         }
     }
 }
+
+/**
+ * 泛型的限定
+ */
