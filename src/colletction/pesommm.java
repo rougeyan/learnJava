@@ -22,6 +22,10 @@ public class pesommm implements Comparable{
         this.age = age;
     }
 
+    public pesommm(String name) {
+        this.name = name;
+    }
+
     public pesommm(String name, int age) {
         this.name = name;
         this.age = age;
