@@ -2,7 +2,7 @@ package src.fanxing;
 
 import java.util.*;
 
-class person {
+class person implements Comparable<person>{
     private String name;
     private int age;
 
@@ -38,6 +38,12 @@ class person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(person o) {
+        int temp = this.age - o.age;
+        return temp ==0?this.name.compareTo(o.name):temp;
     }
 }
 

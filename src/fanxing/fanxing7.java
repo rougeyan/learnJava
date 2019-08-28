@@ -5,8 +5,6 @@ import java.util.Collection;
 
 /**
  * 通配符在api的应用,
- *
- * 泛型限定在api的应用;
  */
 public class fanxing7 {
     public static void main(String[] args) {
