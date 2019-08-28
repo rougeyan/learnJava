@@ -29,9 +29,12 @@ import java.util.*;
  *          队列: 先进先出; First in First Out; FIFO; 排队,先买票先里离开
  *
  *      我的下一个元素是确定的,持有下一个元素的引用
+
+
+
  * set 无序 不包含重复元素的集合; 不满足e1.equals(e2) 最多包含一个null
  *      不保证顺序;
- * 方法和collection一致
+ * CRUD方法和collection一致
  *
  * set集合取出元素的方法只有一种:迭代器 Iterator;
  *  HashSet: 哈希表结构,不同步,保证元素唯一性的方式依赖于hasCode(),equals()方法;
@@ -104,6 +107,8 @@ public class collection3List {
 
         Object obj = ls.get(1);
         System.out.println(obj);
+
+
         for (int i = 0; i < ls.size(); i++) {
             System.out.println("get("+i+")"+ls.get(i));
 

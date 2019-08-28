@@ -15,6 +15,7 @@ public class fanxing2 {
         // 按照长度排序 需要比较器;
         // 使用匿名内部类完成;
         Set<String> s= new TreeSet<String>(new Comparator<String>() {
+            // 指定 比较器;
             //匿名内部类
             // 传参数 的是确保参数的类型匹配;
             @Override
@@ -29,7 +30,9 @@ public class fanxing2 {
         s.add("faf");
         s.add("6421");
         for (Iterator<String> iterator = s.iterator(); iterator.hasNext(); ) {
-            String next = iterator.next();
+            // 因为传入的时候已经明确了是传入String类型的元素,因此不用再向下转型;
+            String next = /**(String) */iterator.next();
+
             System.out.println(next);
         }
     }

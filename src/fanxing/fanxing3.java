@@ -5,17 +5,21 @@ package src.fanxing;
  */
 public class fanxing3 {
     public static void main(String[] args) {
+        // 最开始的转型类;
 //        Alltooooo t = new Alltooooo();
-//        t.setObj(5); // 省去了强转麻烦
-//        String s = (String)t.getObj();
+//        t.setObj(5); 
+//        String s = (String)t.getObj();// 省去了强转麻烦
 //        System.out.println(s);
 
-
+//        添加泛型后:
 //        Altool<String> tt = new Altool();
 //        tt.setObject("haha");
-//        String ss = tt.getObject();
+//        String ss = tt.getObject(); // 不再向下转型;
 //        System.out.println(ss);
 
+
+//      使用泛型类, 可以接入任何类型的
+//      同时取元素的时候也不再确认是什么类型
         Altool<Integer> t3 = new Altool();
         t3.setObject(3);
         Integer s3 = t3.getObject();
@@ -74,6 +78,8 @@ class Alltooooo{
  * 在不确定对象类型的时候,定义成参数,由改类的调用者来传递类型
  * 将泛型定义在类上;
  */
+
+
 // 泛型类
 class Altool<Q>{
      private Q Object;
