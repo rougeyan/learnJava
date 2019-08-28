@@ -142,6 +142,17 @@ public class fanxing8 {
 
         String str = (String) getMax(c2);
         System.out.println(str);
+
+        // 当年没做泛型限定的时候可以传入任意的集合
+        // 只有在在运行时候才会挂掉;
+        // 现在是我已明确此功能中 集合没有错
+        // T必须是Comparabale
+        // 不具备自然排序的对象 传不进来;
+        // 已经做了限定, 说明传递的元素类型必须是Comparable的子类;
+        // 否则编译失败;
+        // Collection<Dog> c3= new ArrayList<Dog>()
+//        getMax(c3)
+        //
     }
     // T 需要不需要做限定
 
