@@ -2,6 +2,9 @@ package src.fanxing;
 
 import java.util.*;
 
+/**
+ * 泛型6 通配符
+ */
 class person implements Comparable<person>{
     private String name;
     private int age;

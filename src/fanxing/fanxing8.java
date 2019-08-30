@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import src.fanxing.Student;
-
 /**
  *  泛型的细节: 保证左右类型一致;
  *
@@ -94,6 +92,12 @@ public class fanxing8 {
 //        }
 //        return max;
 //    }
+
+
+    /**
+     * https://www.cnblogs.com/coprince/p/8603492.html
+     * 泛型类; 泛型方法; 泛型接口; 最全解析;
+     */
     // 3-2-1. 加入泛型
 //    public static void main(String[] args) {
 //        Collection<Student> c1 = new ArrayList<Student>();
@@ -157,8 +161,13 @@ public class fanxing8 {
     // T 需要不需要做限定
 
     /**
+     * 解析: https://blog.csdn.net/qq_35580883/article/details/78627756
      *
+     * 最关键的是传入的T类型必须已经是实现了 Comparable接口 (接口接口) 中compareTo()这个方法。
+     *                  类型                           返回值     入参;
+     * public static <T extends Comparable<? super T>> T getMax(Collection<? extends T > e){
      */
+
     public static <T extends Comparable<? super T>> T getMax(Collection<? extends T > e){
         // 迭代器与容器一致
         Iterator<? extends T> it =e.iterator();
