@@ -92,4 +92,51 @@ public class UtilsDemo {
             }
         }
     }
+
+    // 进阶改造
+    // 增删改
+    // 增删改 只有SQL语句和传入参数是不确定的,所以调用方来传入
+    // 我们发现 增删改进入的参数是各种类型的,而且数目是不确定的,所以使用Object
+    public static void update(String sql,Object[] obj){
+        Connection connection = null;
+        PreparedStatement pstm = null;
+        try{
+            connection = getConnection();
+            pstm = connection.prepareStatement(sql);
+            for (int i = 0; i < obj.length; i++) {
+                pstm.setObject(i+1,obj[i]);
+            }
+            pstm.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            // release();
+        }
+    }
+    /**
+     * 1.对应查询语句来说 不知道对集合结果做数目操作 =>常用的是吧数据封装成Bean对象,封装成List集合
+     * 2.可以定义一个接口,让调用者把接口实现类传递进来
+     * 3.这样接口调用的方法就是调用者传递进来实现类的方法 [策略模式]
+     */
+    public static Object query(String sql, Object[] obj, BeanHandler rsh){
+        Connection connection =null;
+        PreparedStatement preparedStatement =null;
+        ResultSet resultSet = null;
+        try{
+            connection = getConnection();
+            preparedStatement =connection.prepareStatement(sql);
+            // 根据传递进来的参数,设置SQL占位符的值;
+            if(obj !=null){
+                for (int i = 0; i < obj.length; i++) {
+                    preparedStatement.setObject(i+1,obj[i]);
+                }
+            }
+            resultSet = preparedStatement.executeQuery();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return  rsh.handler(resultSet);
+    }
 }
+

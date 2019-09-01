@@ -21,12 +21,17 @@ public class leranJDBCmain {
         leranJDBCmain st = new leranJDBCmain();
         // 查询
 //        st.selectTest();
-        // 增
-        st.insertTest("yanzhihaoha",23);
-        // 删除
-        st.deleteTestByUserName("yanzhihaoha");
+//        // 增
+//        st.insertTest("yanzhihaoha",23);
+//        // 删除
+//        st.deleteTestByUserName("yanzhihaoha");
+//
+//        // 单条查询
+//        st.searchByUserName("yanzhihaoha");
+
         // 改
-        st.UpdateByUserName("yanzhihaoha");
+//        st.UpdateByUserName(24,"yanzhihaoha");
+        st.leranRollBack(500,"accountA","accountB");
     }
     // 测试查询
     public void selectTest(){
@@ -96,8 +101,8 @@ public class leranJDBCmain {
         }
     }
 
-    // 查询
-    public void UpdateByUserName(String updateName){
+    // 单个查询查询
+    public void searchByUserName(String updateName){
         Connection con =null;
         PreparedStatement pstm = null;  // PreparedStatement
         ResultSet rs = null;
@@ -116,4 +121,67 @@ public class leranJDBCmain {
             UtilsDemo.release(con,pstm,rs);
         }
     }
+
+    // 改年龄
+    public void UpdateByUserName(int newAge, String updateName){
+        Connection con =null;
+        PreparedStatement pstm = null;  // PreparedStatement
+        try{
+            String sql = "UPDATE user set user_age=? where user_name = ?";
+            con = UtilsDemo.getConnection();
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1,newAge);
+            pstm.setString(2,updateName);
+            int row =pstm.executeUpdate();
+            if (row > 0) {
+                System.out.println("更新成功!");
+            } else {
+                System.out.println("更新失败!");
+            }
+            System.out.println();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            UtilsDemo.release(con,pstm,null);
+        }
+    }
+
+    // 账户例子  回滚;
+    public void leranRollBack(int money, String addName,String reduceName){
+        Connection con =null;
+        PreparedStatement pstm = null;  // PreparedStatement
+        try{
+            con = UtilsDemo.getConnection();
+            // 开启事务
+            con.setAutoCommit(false);
+            // A账户减去五百块
+            String sql1 = "UPDATE user set money=money-? where user_name = ?";
+            pstm = con.prepareStatement(sql1);
+            pstm.setInt(1,money);
+            pstm.setString(2,addName);
+            System.out.println(pstm.executeUpdate());
+
+            //  转账过程中出现问题错误;
+//            int a = 3/0;
+
+            // B账号新增五百
+            String sql2 = "UPDATE user set money=money+? where user_name = ?";
+            pstm = con.prepareStatement(sql2);
+            pstm.setInt(1,money);
+            pstm.setString(2,reduceName);
+            System.out.println(pstm.executeUpdate());
+            // 如果程序能够执行到这里, 没有跑出异常,我们就提交数据
+            con.commit();
+            // 关闭事务,自动提交
+            con.setAutoCommit(true);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            UtilsDemo.release(con,pstm,null);
+        }
+    }
+
+    // savepoint 中间点
+    // 回到正确的步骤;
+    public void learnSavePoint(){ }
 }
