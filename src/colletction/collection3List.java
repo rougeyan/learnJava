@@ -39,20 +39,21 @@ import java.util.*;
  * set集合取出元素的方法只有一种:迭代器 Iterator;
  *  HashSet: 哈希表结构,不同步,保证元素唯一性的方式依赖于hasCode(),equals()方法;
  *      查询速度快;
- *  TreeSet: 可以对set集合中的元素进行排序;
+ *      通过hasCode,equals()方法来保证元素的唯一性;
+ *  TreeSet(具备排序功能): 可以对set集合中的元素进行排序;
  *      使用的是二叉树结构;如果保证唯一性?
  *      通过comparable 接口来实现排序比较,
  *      优势: 存完的数据具备树的功能;
  *      排序动作是自动的;
  *
- *      元素的排序动作有多重
- *      1. 元素自身具备自然排序,通过实现接口: 改写compareTo方法来实现
+ *      元素的排序动作有多种
+ *      1. (compareTo 方法)元素自身具备自然排序,通过实现接口: 改写compareTo方法来实现
  *      如果元素自身不具备自然排序(如对象) 或者具备的自然排序不符合自身要求, 使用第二种方法;
- *      2. 比较器: 其实在创建TreeSet 的集合的时候,可以定义排序的方法;
+ *      2. (comparator 比较器 : 适用于元素是对象)比较器: 其实在创建TreeSet 的集合的时候,可以定义排序的方法;
  *      在构造函数中指定具体的比较方式;
  *      需要定义一个类实现接口,重写compare方法
- *      Comparator implements Comparator()
- *      TreeSet a = new TreeSet( new Comparator())
+ *      class cptor implements Comparator(){// 重写compare方法()}
+ *      TreeSet a = new TreeSet( new cptor())
  *
  *      细节:方法都是抽象
  *      class CompartorByName extends Object implements Comparator{}
@@ -113,7 +114,7 @@ public class collection3List {
             System.out.println("get("+i+")"+ls.get(i));
 
         }
-
+        // 迭代器;
         for (Iterator iterator = ls.iterator(); iterator.hasNext(); ) {
             pesommm next = (pesommm) iterator.next();
             System.out.println(next);
@@ -121,7 +122,7 @@ public class collection3List {
     }
 }
 
-
+// 创建比较器 实现Comparator
 class CompartorByName implements Comparator{
     @Override
     public int compare(Object o1, Object o2) {

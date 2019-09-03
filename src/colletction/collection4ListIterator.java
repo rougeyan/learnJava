@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 /**
  * listIterator
+ * 允许在迭代的过程中 对元素进行操作;
  */
 
 public class collection4ListIterator {

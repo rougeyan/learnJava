@@ -1,4 +1,6 @@
 package src.fanxing;
+// https://segmentfault.com/a/1190000014120746#articleHeader6
+// https://blog.csdn.net/s10461/article/details/53941091
 
 /**
  * 当方法操作的类型不确定的时候,
@@ -15,6 +17,7 @@ public class fanxing4 {
 }
 
 /**
+ * 泛型方法:
  * 把泛型定义在方法上而不是类上, 避免经常创建
  */
 class Utilss /* Utilss<Q>*/{
@@ -32,8 +35,8 @@ class Utilss /* Utilss<Q>*/{
 /**
  *
  * 把泛型定义在类上
+ * 泛型的类
  */
-// 泛型的类
 class Utilsssss<Q>{
     public void show(Q q) {
         System.out.println("show" + q);
@@ -49,3 +52,7 @@ class Utilsssss<Q>{
 
     }
 }
+
+/**
+ * 泛型的接口
+ */
