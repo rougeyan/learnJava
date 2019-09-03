@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--
+    当浏览器输入 //localhost: 8080/MyServlet 时 发生了什么?
+    1.发现Tomcat中web.xml有配置这个映射路径       <url-pattern>/MyServlet</url-pattern>
+    2.查看映射路径的名字是什么                    <servlet-name>MyServlet</servlet-name>
+    3.通过映射路径的名字找到配置Servlet的名字       <servlet-name>MyServlet</servlet-name>
+    4.通过Servlet的名字找到Servlet编译后的Class文件存放的位置 <servlet-class>MyServlet</servlet-class>
+    5.执行MyServlet
+-->
+    <!--第一个servlet-->
+    <servlet>
+        <!--为Myservlet配一个名字(一般和类名一致)-->
+        <servlet-name>MyServlet1</servlet-name>
+        <!--类的存放位置在哪,如果有包名要加上包名字-->
+        <servlet-class>src.myservlet.MyServlet1</servlet-class>
+        <!--为这个Servlet配置一个参数,参数名是name,值是paramsss-->
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>paramsss</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <!--配置MyServlet的映射路径-->
+        <servlet-name>MyServlet1</servlet-name>
+        <!--外界访问MyServlet的路径-->
+        <url-pattern>/MyServlet1</url-pattern>
+    </servlet-mapping>
+
+    <!--第二个servlet-->
+    <servlet>
+        <!--为Myservlet配一个名字(一般和类名一致)-->
+        <servlet-name>MyServlet2</servlet-name>
+        <!--类的存放位置在哪,如果有包名要加上包名字-->
+        <servlet-class>src.myservlet.MyServlet2</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>paramsss</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <!--配置MyServlet的映射路径-->
+        <servlet-name>MyServlet2</servlet-name>
+        <!--外界访问MyServlet的路径-->
+        <url-pattern>/MyServlet2</url-pattern>
+    </servlet-mapping>
+    <!--更多Servlet...-->
+</web-app>
