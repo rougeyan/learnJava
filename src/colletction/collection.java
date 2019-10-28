@@ -11,7 +11,7 @@ import java.util.Collection;
  *
  *  数组中储存的的是同一类型元素,可以存储基本,可以存储基本数据类型;
  *
- *  集合存储的都是对象,而且对象的类型可以不一致
+ *  集合存储的collection都是对象,而且对象的类型可以不一致
  *  集合框架:
  *
  *  https://www.cnblogs.com/bingyimeiling/p/10255037.html
